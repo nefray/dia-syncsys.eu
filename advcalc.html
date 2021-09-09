@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.12.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.12.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo-1.png" type="image/x-icon">
+  <meta name="description" content="Website Creator Description">
+  
+  
+  <title>Planovac</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/datatables/data-tables.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+<script>
+function toSJ(id) {	
+	var main100g = document.getElementById('hm'+ id).value;
+	var mainvaha = document.getElementById('hx'+ id).value;
+	var mainsj = ( ( main100g / 10 ) * mainvaha ) / 100;
+	var totalsj = 0;
+	var table = document.getElementById("major");
+	var CurrRowID = table.rows.length + 1;
+	document.getElementById('sj'+ id).value = mainsj;
+	if (id == CurrRowID - 1) {
+		addRow();
+	}
+	for (i = 2; i < CurrRowID; i++) {
+		totalsj += +document.getElementById('sj'+ i).value;
+	}
+	document.getElementById('sjtotal').value = totalsj;
+	
+	
+}
+</script>
+<script>
+function addRow() {
+	var table = document.getElementById("major");
+	var CurrRowID = table.rows.length;;
+	var NewRowID = CurrRowID + 1;
+	var row = table.insertRow(CurrRowID);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	cell1.innerHTML ='<input placeholder="poznámka" type="text" id="txt'+ NewRowID +'"/>'
+	cell2.innerHTML ='<input placeholder="0" type="number" onchange="toSJ('+ NewRowID +') "id="hm'+ NewRowID +'"/>'
+	cell3.innerHTML ='<input placeholder="0" type="number" onchange="toSJ('+ NewRowID +')" id="hx'+ NewRowID +'" />'
+	cell4.innerHTML ='<input type="number" value="0" class="result" readonly id="sj'+ NewRowID +'"/>'
+}
+</script>    
+<script>
+function download_table_as_csv(table_id, separator = ',') {
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    var csv = [];
+	var row = [];
+    var data1 = 'Poznamka'
+	var data2 = 'Sacharidy na 100g'
+	var data3 = 'Hmotnost'
+	var data4 = 'SJ'
+    data1 = data1.replace(/"/g, '""');
+	data2 = data2.replace(/"/g, '""');
+	data3 = data3.replace(/"/g, '""');
+	data4 = data4.replace(/"/g, '""');
+	row.push('"' + data1 + '"');
+	row.push('"' + data2 + '"');
+	row.push('"' + data3 + '"');
+	row.push('"' + data4 + '"');
+	csv.push(row.join(separator));	
+    for (var i = 2; i < rows.length; i++) {
+		row = []
+        data1 = document.getElementById("txt" + i).value.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+		data2 = document.getElementById("hm" + i).value.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+		data3 = document.getElementById("hx" + i).value.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+		data4 = document.getElementById("sj" + i).value.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+        data1 = data1.replace(/"/g, '""');
+		data2 = data2.replace(/"/g, '""');
+		data3 = data3.replace(/"/g, '""');
+		data4 = data4.replace(/"/g, '""');
+        row.push('"' + data1 + '"');
+		row.push('"' + data2 + '"');
+		row.push('"' + data3 + '"');
+		row.push('"' + data4 + '"');
+		csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'export_' + table_id + '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>  
+  
+</head>
+<body>
+  <section class="menu cid-soVj2KMwaG" once="menu" id="menu1-g">
+
+    
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top collapsed bg-color transparent">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="https://dia.syncsys.eu/#">
+                         <img src="assets/images/logo-1.png" alt="Mobirise" title="" style="height: 3.8rem;">
+                    </a>
+                </span>
+                
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="https://www.sacharidydovrecka.sk/" target="_blank">Sacharidové Tabuľky</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="https://varecha.pravda.sk/recepty/diety/pre-diabetikov/" target="_blank">Recepty - DIA<br></a></li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="https://www.fitrecepty.sk/" target="_blank">Recepty - FIT</a>
+                </li></ul>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="https://dia.syncsys.eu">Domov</a></div>
+        </div>
+    </nav>
+</section>
+
+<section class="engine"><a href="https://mobirise.info/o">portfolio site templates</a></section><section class="header1 cid-sp1yhM2TUs mbr-parallax-background" id="header1-l">
+
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1">
+                    Plánovacia Kalkulačka</h1>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="counters1 counters cid-sp1wXTJ5LK" id="counters1-k">
+
+    
+
+    
+
+    <div class="container">
+        <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">Spolu SJ</h2>
+        
+
+        <div class="container pt-4 mt-2">
+            <div class="media-container-row">
+                <div class="card p-3 align-center col-12 col-md-6">
+                    <div class="panel-item p-3">
+                        
+
+                        <div class="card-text">
+							<input type="number" value="0" id="sjtotal" readonly />           
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+                
+
+
+                
+            </div>
+        </div>
+   </div>
+</section>
+
+<section class="section-table cid-sp1wwzkT2i" id="table1-j">
+
+  
+  
+  <div class="container container-table">
+      
+      
+      <div class="table-wrapper">
+        <div class="container">
+          
+        </div>
+
+        <div class="container scroll">
+          <table class="table" id="major" cellspacing="0" data-empty="No matching records found">
+			<thead>
+			 <tr class="table-heads ">
+			  <th class="head-item mbr-fonts-style display-7" id="th1">Poznámka</th>
+			  <th class="head-item mbr-fonts-style display-7" id="th2">Sacharidy na 100g</th>
+			  <th class="head-item mbr-fonts-style display-7" id="th3">Hmotnosť (g)</th>
+			  <th class="head-item mbr-fonts-style display-7" id="th4">SJ</th>
+			 </tr>
+			</thead>
+            <tbody>
+			 <tr>
+			  <td class="head-item mbr-fonts-style display-7"><input placeholder="poznámka" type="text" id="txt2"/></td>
+			  <td class="head-item mbr-fonts-style display-7"><input placeholder="0" type="number" id="hm2" onchange="toSJ(2)" /></td>
+			  <td class="head-item mbr-fonts-style display-7"><input placeholder="0" type="number" id="hx2" onchange="toSJ(2)" /></td>
+			  <td class="head-item mbr-fonts-style display-7"><input type="number" value="0" class="result" id="sj2" readonly /></td>
+			 </tr>     
+			</tbody>
+          </table>
+		  <br>
+		  <a href="#" onclick="download_table_as_csv('major');">Stiahnuť Tabuľku</a><p>Diakritika neni podporovaná</p>
+        </div>
+        <div class="container table-info-container">
+          
+        </div>
+      </div>
+    </div>
+</section>  
+<section once="footers" class="cid-soVj7ICxpB" id="footer6-h">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">dia.syncsys.eu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/parallax/jarallax.min.js"></script>
+  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  
+</body>
+</html>
