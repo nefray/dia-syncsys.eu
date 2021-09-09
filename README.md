@@ -1,8 +1,21 @@
-# dia-syncsys.eu
+# About
 [![CodeQL](https://github.com/nefray/dia-syncsys.eu/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/nefray/dia-syncsys.eu/actions/workflows/codeql-analysis.yml)
 
-Page dedicated to Diabetes awarness and helping people to calculate intake of sugars from meals. 
-Calculations are done in "Sugar Unit" which represent 1SJ = 2 mmol/l glucose change. 
+Page dedicated to calculation of glucose intake. 
 
-Page is in Slovak and does it's job. 
-Refferences to other pages are to help direct people to the best resources avalivable to gain the insight and help them manage their diabetes life.
+ |   |   |
+|---|---|
+|_Language:_| Slovak :slovakia: |
+| Units: | mmol/l :drop_of_blood: |
+
+The page contains references to other pages which should help users to understand and helps to calculate sugar intakes based on the sugar contents in each food. 
+
+
+## Features
+- [x] Educational text for users (General Explanation)
+- [x] References to the other resources about Diabetes.
+- [x] Simple calc - Calculate how much sugar units (SJ = 2mmol/l) food has.
+- [x] Simple reverse calc - Calculate how much sugar you need to intake.
+- [x] Planning calc - Multi food option to calculate multiple objects + download of the generated CSV
+
+ 
