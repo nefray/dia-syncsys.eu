@@ -8824,6 +8824,8 @@
 				var tpj = 0;
 				var tpj1 = 0;
 				var tpj2 = 0;
+				var split1 = 0;
+				var split2 = 0;
 				var toVaha = document.getElementById('toVaha').checked;
 				var toTPJ = document.getElementById('toTPJ').checked;
 				
@@ -8837,8 +8839,12 @@
 						tpj1 = (fieldmiddle1 / 100) * fieldmiddle * 4; 
 						tpj2 = (fieldmiddle2 / 100) * fieldmiddle * 9;
 						tpj = (tpj1 + tpj2) / 100; 
+						split1 = fieldbottom;
 						fieldbottom = fieldbottom + tpj;
+						split1 = (split1 / fieldbottom) * 100;
+						split2 = 100 - split1;
 						document.getElementById('fieldbottom').value = fieldbottom;
+						document.getElementById('split').innerHTML = "Rozlozenie bolusu: " + split1.toFixed(0) + ":" + split2.toFixed(0);
 					}
 					else {
 						document.getElementById('fieldbottom').value = fieldbottom;
@@ -8855,22 +8861,39 @@
 				if ( toVaha == true){
 					document.getElementById('fieldmiddle1-tr').style.visibility = 'collapse';
 					document.getElementById('fieldmiddle2-tr').style.visibility = 'collapse';
+					document.getElementById('fieldmiddle1').value = 0;
+					document.getElementById('fieldmiddle2').value = 0;
+					document.getElementById('fieldmiddle').value = 0;
+					document.getElementById('fieldbottom').value = 0;
+					document.getElementById('fieldtop').value = 0;
 					document.getElementById('label_fieldtop').innerHTML = "Sacharidy na 100g";
 					document.getElementById('label_fieldmiddle').innerHTML = "SJ";
 					document.getElementById('label_fieldbottom').innerHTML = "Hmotnosť v g";
+					document.getElementById('split').innerHTML = " ";
 				} 
 				else if ( toTPJ == true ) {
 					document.getElementById('fieldmiddle1-tr').style.visibility = 'visible';
 					document.getElementById('fieldmiddle2-tr').style.visibility = 'visible';
+					document.getElementById('fieldmiddle1').value = 0;
+					document.getElementById('fieldmiddle2').value = 0;
+					document.getElementById('fieldmiddle').value = 0;
+					document.getElementById('fieldbottom').value = 0;
+					document.getElementById('fieldtop').value = 0;
 					document.getElementById('label_fieldtop').innerHTML = "Sacharidy na 100g";
 					document.getElementById('label_fieldmiddle').innerHTML = "Hmotnosť v g";
 					document.getElementById('label_fieldbottom').innerHTML = "SJ";
 				} else if ( toStandard == true) {
 					document.getElementById('fieldmiddle1-tr').style.visibility = 'collapse';
 					document.getElementById('fieldmiddle2-tr').style.visibility = 'collapse';
+					document.getElementById('fieldmiddle1').value = 0;
+					document.getElementById('fieldmiddle2').value = 0;
+					document.getElementById('fieldmiddle').value = 0;
+					document.getElementById('fieldbottom').value = 0;
+					document.getElementById('fieldtop').value = 0;
 					document.getElementById('label_fieldtop').innerHTML = "Sacharidy na 100g";
 					document.getElementById('label_fieldmiddle').innerHTML = "Hmotnosť v g";
 					document.getElementById('label_fieldbottom').innerHTML = "SJ";
+					document.getElementById('split').innerHTML = " ";
 				}
 				
 			}
@@ -8897,7 +8920,7 @@
 							<div class="form-group">
 								<th>
 									<label for="toStandard" >
-									Standard
+									Štandard
 									</label>
 									<input type="radio" name="selector" id="toStandard" onchange="layoutedit()" checked>
 								</th>
@@ -8905,7 +8928,7 @@
 							<div class="form-group">
 								<th>
 									<label for="toVaha" >
-									Vaha
+									Váha
 									</label>
 									<input type="radio" name="selector" id="toVaha" onchange="layoutedit()">
 								</th>
@@ -8967,7 +8990,7 @@
 								<label for="fieldbottom" id="label_fieldbottom">
 								FieldBottom
 								</label>
-								<input type="text" class="form-control" id="fieldbottom">
+								<input type="text" class="form-control" id="fieldbottom" readonly="true">
 							</td>
 						</div>
 						</tr>
@@ -8975,6 +8998,9 @@
 				</tbody>
 				</table>
 				<div class="col-md-6">
+					<br>
+					<br>
+					<p id="split"></p>
 				</div>
 			</div>
 		</div>
